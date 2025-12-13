@@ -435,8 +435,10 @@ void matchload_right() {
   intake.move(OUTTAKE_SPEED);
   chassis.pid_drive_set(6_in, 127);
   chassis.pid_wait();
+  outtake.move(OUTTAKE_SPEED);
   pros::delay(OUTTAKE_TIME * 2);
   intake.move(0);
+  outtake.move(0);
   matchloader.set(false);
   chassis.pid_drive_set(-24_in, DRIVE_SPEED);
   chassis.pid_wait();
