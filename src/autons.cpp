@@ -421,7 +421,7 @@ void matchload() {
 void trial() {
   chassis.pid_drive_set(6_in, 110);
   chassis.pid_drive_set(6_in, 60);
-  chassis.pid_wait_quick_chain()
+  chassis.pid_wait_quick_chain();
 }
 
 void skillsAuton(){
