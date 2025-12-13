@@ -52,7 +52,6 @@ void initialize() {
   chassis.opcontrol_curve_default_set(0.0, 0.0);  // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)
   chassis.slew_drive_set(true);  
   chassis.slew_drive_constants_set(5_in, 50);
-  chassis.opcontrol_curve_default_set(110);
 
   // Set the drive to your own constants from autons.cpp!
   default_constants();
@@ -68,13 +67,18 @@ void initialize() {
       // {"Right Auton\n\nDrive forward, turn right, and come back", right_auton},
       // {"Solo AWP\n\nDrive forward, shoot, and come back", solo_awp},
       // {"Skills\n\nFull skills auton", skills_auton},
-      {"Kamakaze Right Corner\n Kamakaze From Top Right Corner Pointing Out.", kamakaze_from_corner}
+      {"Kamakaze Right Corner\n Kamakaze From Top Right Corner Pointing Out.", kamakaze_from_corner},
+      {"Matchload Right\n For the right!.", matchload},
+      {"Trial\n Runs 1ft Forward at 110 (86%)", trial},
+
+
   });
 
   // Initialize chassis and auton selector
   chassis.initialize();
   ez::as::initialize();
   master.rumble(chassis.drive_imu_calibrated() ? "." : "---");
+  middlegoal.set(true)
 }
 
 /**
@@ -244,10 +248,10 @@ void opcontrol() {
     // Gives you some extras to make EZ-Template ezier
     ez_template_extras();
 
-    chassis.opcontrol_tank();  // Tank control
+    // chassis.opcontrol_tank();  // Tank control
     // chassis.opcontrol_arcade_standard(ez::SPLIT);   // Standard split arcade
     // chassis.opcontrol_arcade_standard(ez::SINGLE);  // Standard single arcade
-    // chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
+    chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
     // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
     // pneumatics shenanigans
     if (master.get_digital(DIGITAL_UP)) {
@@ -259,10 +263,10 @@ void opcontrol() {
 
     // intake shenanigans
     if (master.get_digital(DIGITAL_R1)) {
-      intake.move(95);
+      intake.move(110);
     } 
     else if (master.get_digital(DIGITAL_R2)) {
-      intake.move(-95);
+      intake.move(-110);
     } 
     else {
       intake.move(0);
@@ -270,16 +274,16 @@ void opcontrol() {
 
     // outtake shenanigans
     if (master.get_digital(DIGITAL_L1)) {
-      outtake.move(95);
+      outtake.move(110);
     }
     else {
       outtake.move(0);
     }
     if (master.get_digital(DIGITAL_L2)) {
-      chassis.opcontrol_speed_max_set(43);
+      chassis.opcontrol_speed_max_set(20);
     } 
     else {
-      chassis.opcontrol_speed_max_set(110);
+      chassis.opcontrol_speed_max_set(58);
     }
     
 

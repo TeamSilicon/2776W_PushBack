@@ -410,3 +410,20 @@ void kamakaze_from_corner() {
   chassis.pid_drive_set(14_in, 50);
   
 }
+void matchload() {
+  chassis.pid_drive_set(30_in, 110);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, 80);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(5_in, 110);
+  chassis.pid_wait();
+} 
+void trial() {
+  chassis.pid_drive_set(6_in, 110);
+  chassis.pid_drive_set(6_in, 60);
+  chassis.pid_wait_quick_chain()
+}
+
+void skillsAuton() {
+
+}
