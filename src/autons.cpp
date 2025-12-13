@@ -397,11 +397,16 @@ void skills_auton() {
   odom_pure_pursuit_example();
 }
 void kamakaze_from_corner() {
+  matchloader.set(false);
   chassis.slew_drive_set(true); 
-  chassis.slew_drive_constants_set(15_in, 110);
+  chassis.pid_drive_set(22_in, 110);
   chassis.pid_drive_set(5_in, 50);
   chassis.pid_wait();
   chassis.pid_turn_set(90_deg, 80);
-  matchloader.set(false);
-  intake.move_relative(10, 10_in);
- }
+  chassis.pid_drive_set(6_in, 50);
+  intake.move(127); 
+  chassis.pid_wait_quick_chain();
+  intake.move(0);
+  chassis.pid_drive_set(14_in, 50);
+  
+}
