@@ -1,6 +1,5 @@
 #include "main.h"
 #include "subsystems.hpp"
-
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
 // https://ez-robotics.github.io/EZ-Template/
@@ -62,22 +61,21 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      {"Trial\n Runs 1ft Forward at 110 (86%)", trial},
-      {"Drive\n\nDrive forward and come back", drive_example},
       // {"Left Auton\n\nDrive forward, turn left, and come back", left_auton},
       // {"Right Auton\n\nDrive forward, turn right, and come back", right_auton},
       // {"Solo AWP\n\nDrive forward, shoot, and come back", solo_awp},
-      // {"Skills\n\nFull skills auton", skills_auton},
-      {"Kamakaze Right Corner\n Kamakaze From Top Right Corner Pointing Out.", kamakaze_from_corner},
-      {"Matchload Right\n For the right!.", matchload},
+            {"Skills\n\nFull skills auton", skillsAuton},
+        {"Matchload Right\n For the right!.", matchload_right},
+        {"Matchload Left\n For the left!.", matchload_left},
+      {"Kamakaze Right Corner\n Kamakaze From Top Right Corner Pointing Out.", kamakaze_right}
   });
 
   // Initialize chassis and auton selector
   chassis.initialize();
   ez::as::initialize();
   master.rumble(chassis.drive_imu_calibrated() ? "." : "---");
+  matchloader.set(false);
   middlegoal.set(true);
-
 }
 
 /**

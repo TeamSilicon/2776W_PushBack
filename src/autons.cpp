@@ -1,14 +1,22 @@
 #include "main.h"
 #include "subsystems.hpp"
+
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
 // https://ez-robotics.github.io/EZ-Template/
 /////
 
 // These are out of 127
-const int DRIVE_SPEED = 110;
+const int DRIVE_SPEED = 50;
 const int TURN_SPEED = 90;
 const int SWING_SPEED = 110;
+
+// OUTTAKE
+const int OUTTAKE_TIME = 500; // time to run outtake motor in ms
+const int OUTTAKE_SPEED = 110; // speed to run outtake motor
+
+// SIZE
+const int ROBOT_LENGTH = 18; // robot length in inches
 
 ///
 // Constants
@@ -394,36 +402,125 @@ void solo_awp() {
 
 void skills_auton() {
   // Example:
-  odom_pure_pursuit_example();
+  skillsAuton();
 }
-void kamakaze_from_corner() {
-  matchloader.set(false);
-  chassis.slew_drive_set(true); 
-  chassis.pid_drive_set(22_in, 110);
-  chassis.pid_drive_set(5_in, 50);
+
+void matchload_left() {
+  chassis.pid_drive_set(32_in, DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_turn_set(90_deg, 80);
-  chassis.pid_drive_set(6_in, 50);
-  intake.move(127); 
-  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(-90_deg, 80);
+  matchloader.set(true);
+  chassis.pid_wait();
+  intake.move(OUTTAKE_SPEED);
+  chassis.pid_drive_set(6_in, 127);
+  chassis.pid_wait();
+  pros::delay(OUTTAKE_TIME * 2);
   intake.move(0);
-  chassis.pid_drive_set(14_in, 50);
-  
+  matchloader.set(false);
+  chassis.pid_drive_set(-24_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  intake.move(OUTTAKE_SPEED);
+  outtake.move(OUTTAKE_SPEED);
+  pros::delay(OUTTAKE_TIME * 4);
+  intake.move(0);
+  outtake.move(0);
+
 }
-void matchload() {
-  chassis.pid_drive_set(30_in, 110);
+void matchload_right() {
+  chassis.pid_drive_set(32_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(90_deg, 80);
-  chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(5_in, 110);
+  matchloader.set(true);
   chassis.pid_wait();
-} 
-void trial() {
-  chassis.pid_drive_set(6_in, 110);
-  chassis.pid_drive_set(6_in, 60);
-  chassis.pid_wait_quick_chain();
+  intake.move(OUTTAKE_SPEED);
+  chassis.pid_drive_set(6_in, 127);
+  chassis.pid_wait();
+  pros::delay(OUTTAKE_TIME * 2);
+  intake.move(0);
+  matchloader.set(false);
+  chassis.pid_drive_set(-24_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  intake.move(OUTTAKE_SPEED);
+  outtake.move(OUTTAKE_SPEED);
+  pros::delay(OUTTAKE_TIME * 4);
+  intake.move(0);
+  outtake.move(0);
+
 }
 
-void skillsAuton(){
+void kamakaze_right() {
+  chassis.pid_drive_set(28_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-91_deg, TURN_SPEED);
+  chassis.pid_wait();
+  intake.move(OUTTAKE_SPEED);
+  chassis.pid_drive_set(12.5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  intake.move(0);
 
+  chassis.pid_drive_set(10.5_in, DRIVE_SPEED + 10);
+  chassis.pid_wait();
+  intake.move(-OUTTAKE_SPEED);
+  pros::delay(OUTTAKE_TIME * 3); // 1nce is 500ms
+  intake.move(0);
+}
+void p2() {
+  chassis.pid_drive_set(40_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(9_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+}
+void skillsAuton(){
+  matchload_right();  
+  //escape
+  chassis.pid_drive_set(15_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(225_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(34_in, DRIVE_SPEED);
+  /// outtake kamikaze
+  pros::delay(OUTTAKE_TIME * 2);
+  intake.move(OUTTAKE_SPEED);
+  chassis.pid_wait();
+  intake.move(0);
+
+  chassis.pid_drive_set(12_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  intake.move(-OUTTAKE_SPEED);
+  pros::delay(OUTTAKE_TIME * 3); 
+  chassis.pid_drive_set(-12_in, DRIVE_SPEED);
+  intake.move(0);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(46_in, DRIVE_SPEED);
+  pros::delay(200); 
+  intake.move(OUTTAKE_SPEED);
+  chassis.pid_wait();
+  intake.move(0);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-45_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-17_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  middlegoal.set(false);
+
+  intake.move(OUTTAKE_SPEED);
+  outtake.move(OUTTAKE_SPEED);
+  pros::delay(OUTTAKE_TIME * 4);
+  intake.move(0);
+  outtake.move(0);
+middlegoal.set(true);
+p2();
+  
+  // chassis.pid_turn_set(-30_deg, TURN_SPEED);
+  // chassis.pid_wait();
+  // chassis.pid_drive_set(34_in, DRIVE_SPEED);
+  // chassis.pid_wait();
+  // chassis.pid_turn_set(-60_deg, TURN_SPEED);
+  // chassis.pid_wait();
+  
 }
