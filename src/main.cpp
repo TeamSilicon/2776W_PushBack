@@ -68,7 +68,7 @@ void initialize() {
       // {"Right Auton\n\nDrive forward, turn right, and come back", right_auton},
       // {"Solo AWP\n\nDrive forward, shoot, and come back", solo_awp},
       // {"Skills\n\nFull skills auton", skills_auton},
-      {"Kamakaze Right Corner\n Kamakaze From Top Right Corner Pointing Out.", kamakaze_from_corner()},
+      {"Kamakaze Right Corner\n Kamakaze From Top Right Corner Pointing Out.", kamakaze_from_corner}
   });
 
   // Initialize chassis and auton selector
@@ -244,10 +244,10 @@ void opcontrol() {
     // Gives you some extras to make EZ-Template ezier
     ez_template_extras();
 
-    // chassis.opcontrol_tank();  // Tank control
+    chassis.opcontrol_tank();  // Tank control
     // chassis.opcontrol_arcade_standard(ez::SPLIT);   // Standard split arcade
     // chassis.opcontrol_arcade_standard(ez::SINGLE);  // Standard single arcade
-    chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
+    // chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
     // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
     // pneumatics shenanigans
     if (master.get_digital(DIGITAL_UP)) {
