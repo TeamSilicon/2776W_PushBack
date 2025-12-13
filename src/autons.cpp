@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include "subsystems.hpp"
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
 // https://ez-robotics.github.io/EZ-Template/
@@ -396,3 +396,12 @@ void skills_auton() {
   // Example:
   odom_pure_pursuit_example();
 }
+void kamakaze_from_corner() {
+  chassis.slew_drive_set(true); 
+  chassis.slew_drive_constants_set(15_in, 110);
+  chassis.pid_drive_set(5_in, 50);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, 80);
+  matchloader.set(false);
+  intake.move_relative(10, 10_in);
+ }

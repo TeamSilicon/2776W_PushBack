@@ -1,4 +1,5 @@
 #include "main.h"
+#include "subsystems.hpp"
 
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
@@ -8,8 +9,9 @@
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
+    {-20,-15, 14},
     {19, 18, -17},     // Left Chassis Ports (negative port will reverse it!)
-    {-20,-15, 14},  // Right Chassis Ports (negative port will reverse it!)
+      // Right Chassis Ports (negative port will reverse it!)
 
     2,      // IMU Port
     3.25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
@@ -46,8 +48,12 @@ void initialize() {
 
   // Configure your chassis controls
   chassis.opcontrol_curve_buttons_toggle(true);   // Enables modifying the controller curve with buttons on the joysticks
-  chassis.opcontrol_drive_activebrake_set(0.0);   // Sets the active brake kP. We recommend ~2.  0 will disable.
+  chassis.opcontrol_drive_activebrake_set(2.0);   // Sets the active brake kP. We recommend ~2.  0 will disable.
   chassis.opcontrol_curve_default_set(0.0, 0.0);  // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)
+  chassis.slew_drive_set(true);  
+  chassis.slew_drive_constants_set(5_in, 50);
+  chassis.pid_speed_max_set(63);
+    chassis.opcontrol_speed_max_set(63);
 
   // Set the drive to your own constants from autons.cpp!
   default_constants();
@@ -257,9 +263,35 @@ void opcontrol() {
     chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
     // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
 
-    // . . .
-    // Put more user control code here!
-    // . . .
+    // pneumatics shenanigans
+    if (master.get_digital(DIGITAL_UP)) {
+      matchloader.set(true);
+    } 
+    else if (master.get_digital(DIGITAL_DOWN)) {
+      matchloader.set(false);
+    } 
+
+    // intake shenanigans
+    if (master.get_digital(DIGITAL_R1)) {
+      intake.move(127);
+    } 
+    else if (master.get_digital(DIGITAL_R2)) {
+      intake.move(-127);
+    } 
+    else {
+      intake.move(0);
+    }
+
+    // outtake shenanigans
+    if (master.get_digital(DIGITAL_L1)) {
+      outtake.move(127);
+    } 
+    else if (master.get_digital(DIGITAL_L2)) {
+      outtake.move(-127);
+    } 
+    else {
+      outtake.move(0);
+    }
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
