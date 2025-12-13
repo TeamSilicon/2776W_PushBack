@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include "subsystems.hpp"
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
 // https://ez-robotics.github.io/EZ-Template/
@@ -395,4 +395,35 @@ void solo_awp() {
 void skills_auton() {
   // Example:
   odom_pure_pursuit_example();
+}
+void kamakaze_from_corner() {
+  matchloader.set(false);
+  chassis.slew_drive_set(true); 
+  chassis.pid_drive_set(22_in, 110);
+  chassis.pid_drive_set(5_in, 50);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, 80);
+  chassis.pid_drive_set(6_in, 50);
+  intake.move(127); 
+  chassis.pid_wait_quick_chain();
+  intake.move(0);
+  chassis.pid_drive_set(14_in, 50);
+  
+}
+void matchload() {
+  chassis.pid_drive_set(30_in, 110);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, 80);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(5_in, 110);
+  chassis.pid_wait();
+} 
+void trial() {
+  chassis.pid_drive_set(6_in, 110);
+  chassis.pid_drive_set(6_in, 60);
+  chassis.pid_wait_quick_chain()
+}
+
+void skillsAuton() {
+
 }
