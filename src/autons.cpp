@@ -467,23 +467,35 @@ void kamakaze_right() {
   intake.move(0);
 }
 void p2() {
-  chassis.pid_drive_set(40_in, DRIVE_SPEED);
+  // Cross over field to side opposite starting point
+  chassis.pid_drive_set(49_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(-90_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(9_in, DRIVE_SPEED);
+  matchloader.set(true);
+  chassis.pid_drive_set(10_in, DRIVE_SPEED);
+  intake.move(OUTTAKE_SPEED);
+  pros::delay(OUTTAKE_TIME * 2);  
   chassis.pid_wait();
-
+  intake.move(0);
+  matchloader.set(false);
+  chassis.pid_drive_set(-24_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  intake.move(OUTTAKE_SPEED);
+  outtake.move(OUTTAKE_SPEED);
+  pros::delay(OUTTAKE_TIME * 4);
+  intake.move(0);
+  outtake.move(0);
 }
 void skillsAuton(){
   matchload_right();  
-  //escape
+  //escape the starting matchload
   chassis.pid_drive_set(15_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(225_deg, TURN_SPEED);
   chassis.pid_wait();
   chassis.pid_drive_set(34_in, DRIVE_SPEED);
-  /// outtake kamikaze
+  /// outtake kamikaze at center goals
   pros::delay(OUTTAKE_TIME * 2);
   intake.move(OUTTAKE_SPEED);
   chassis.pid_wait();
