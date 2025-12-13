@@ -62,6 +62,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
+      {"Trial\n Runs 1ft Forward at 110 (86%)", trial},
       {"Drive\n\nDrive forward and come back", drive_example},
       // {"Left Auton\n\nDrive forward, turn left, and come back", left_auton},
       // {"Right Auton\n\nDrive forward, turn right, and come back", right_auton},
@@ -69,16 +70,14 @@ void initialize() {
       // {"Skills\n\nFull skills auton", skills_auton},
       {"Kamakaze Right Corner\n Kamakaze From Top Right Corner Pointing Out.", kamakaze_from_corner},
       {"Matchload Right\n For the right!.", matchload},
-      {"Trial\n Runs 1ft Forward at 110 (86%)", trial},
-
-
   });
 
   // Initialize chassis and auton selector
   chassis.initialize();
   ez::as::initialize();
   master.rumble(chassis.drive_imu_calibrated() ? "." : "---");
-  middlegoal.set(true)
+  middlegoal.set(true);
+
 }
 
 /**

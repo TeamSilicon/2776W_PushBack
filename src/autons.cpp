@@ -424,6 +424,6 @@ void trial() {
   chassis.pid_wait_quick_chain()
 }
 
-void skillsAuton() {
+void skillsAuton(){
 
 }
