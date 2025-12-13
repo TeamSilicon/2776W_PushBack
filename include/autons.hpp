@@ -19,3 +19,4 @@ void measure_offsets();
 void kamakaze_from_corner();
 void matchload();
 void trial();
+void skillsAuton();
