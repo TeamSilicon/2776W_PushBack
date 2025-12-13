@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Pro Skills",
+    "project_name": "Skills",
     "target": "v5",
     "templates": {
       "EZ-Template": {
@@ -424,9 +424,9 @@
       }
     },
     "upload_options": {
-      "description": "\"I'm on twenty minutes of sleep. Free me!!!\" - Shaun & Cherry",
+      "description": "Skilly Skill",
       "slot": 1,
-      "icon": "clawbot"
+      "icon": "power"
     },
     "use_early_access": false
   }
