@@ -14,4 +14,4 @@ inline pros::Motor outtake(-1);
 inline pros::Motor intake(10);
 inline ez::Piston matchloader('H');
 inline ez::Piston middlegoal('D');
-
+inline ez::Piston wing('C');
