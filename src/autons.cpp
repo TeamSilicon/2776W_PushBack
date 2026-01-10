@@ -427,10 +427,10 @@ void matchload_left() {
 
 }
 void matchload_right() {
+    matchloader.set(false);
   chassis.pid_drive_set(32_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(90_deg, 80);
-  matchloader.set(true);
   chassis.pid_wait();
   intake.move(OUTTAKE_SPEED);
   chassis.pid_drive_set(6_in, 127);
@@ -439,7 +439,6 @@ void matchload_right() {
   pros::delay(OUTTAKE_TIME * 2);
   intake.move(0);
   outtake.move(0);
-  matchloader.set(false);
   chassis.pid_drive_set(-24_in, DRIVE_SPEED);
   chassis.pid_wait();
   intake.move(OUTTAKE_SPEED);
@@ -460,10 +459,10 @@ void kamakaze_right() {
   chassis.pid_wait();
   intake.move(0);
 
-  chassis.pid_drive_set(10.5_in, DRIVE_SPEED + 10);
+  chassis.pid_drive_set(11.5_in, DRIVE_SPEED + 10);
   chassis.pid_wait();
-  intake.move(-OUTTAKE_SPEED);
-  pros::delay(OUTTAKE_TIME * 3); // 1nce is 500ms
+  intake.move(-75);
+  pros::delay(OUTTAKE_TIME * 4); // 1nce is 500ms
   intake.move(0);
 }
 void p2() {
@@ -475,7 +474,6 @@ void p2() {
   matchloader.set(true);
   chassis.pid_drive_set(10_in, DRIVE_SPEED);
   intake.move(OUTTAKE_SPEED);
-  outtake.move(OUTTAKE_SPEED);
   pros::delay(100);
   outtake.move(0);
   pros::delay(OUTTAKE_TIME * 2);  

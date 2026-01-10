@@ -62,21 +62,10 @@ void initialize() {
       // {"Left Auton\n\nDrive forward, turn left, and come back", left_auton},
       // {"Right Auton\n\nDrive forward, turn right, and come back", right_auton},
       // {"Solo AWP\n\nDrive forward, shoot, and come back", solo_awp},
-                                          {"Skills\n\nFull skills auton", skillsAuton},
-
-                                      {"Kamakaze Right Corner\n Kamakaze From Top Right Corner Pointing Out.", kamakaze_right},
-
-
-
-
-                        {"Matchload Left\n For the left!.", matchload_left},
-
-                        {"Matchload Right\n For the right!.", matchload_right}
-
-
-
-
-
+      {"Kamakaze Right Corner\n Kamakaze From Top Right Corner Pointing Out.", kamakaze_right},
+      {"Skills\n\nFull skills auton", skillsAuton},
+      {"Matchload Left\n For the left!.", matchload_left},
+      {"Matchload Right\n For the right!.", matchload_right}
 
 
   });
@@ -260,9 +249,9 @@ void opcontrol() {
     ez_template_extras();
 
     // chassis.opcontrol_tank();  // Tank control
-    chassis.opcontrol_arcade_standard(ez::SPLIT);   // Standard split arcade
+    // chassis.opcontrol_arcade_standard(ez::SPLIT);   // Standard split arcade
     // chassis.opcontrol_arcade_standard(ez::SINGLE);  // Standard single arcade
-    // chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
+    chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
     // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
     // pneumatics shenanigans
 
