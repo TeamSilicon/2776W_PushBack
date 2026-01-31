@@ -365,3 +365,55 @@ void autonSkillsV2() {
   // 51 Rotate 100000 -> interpret as very large turn
   chassis.pid_turn_set(100000_deg, TURN_SPEED); chassis.pid_wait();
 }
+
+// TUFF NAME BRO TRUST ME
+void razorAutonRight() {
+  // 1. Forward
+  chassis.pid_drive_set(24_in, DRIVE_SPEED); chassis.pid_wait();
+  
+  // 2. Turn Right 90
+  chassis.pid_turn_set(90_deg, TURN_SPEED); chassis.pid_wait();
+  
+  // 3. Extend Matchloader Piston
+  matchloader.set(true);
+  
+  // 4. Forward
+  chassis.pid_drive_set(12_in, DRIVE_SPEED); chassis.pid_wait();
+  
+  // 5. Wait 2 or 3 seconds to collect balls
+  pros::delay(2500); 
+  
+  // 6. Backwards (to goal)
+  chassis.pid_drive_set(-24_in, DRIVE_SPEED); chassis.pid_wait();
+  
+  // 7. Outtake
+  outtake.move(0); 
+  pros::delay(2500); 
+  outtake.move_voltage(0); 
+  
+  // 8. Backwards
+  chassis.pid_drive_set(-12_in, DRIVE_SPEED); chassis.pid_wait();
+  
+  // 9. Turn 45 degrees to left
+  chassis.pid_turn_set(-45_deg, TURN_SPEED); chassis.pid_wait();
+  
+  // 10. Backwards
+  chassis.pid_drive_set(-12_in, DRIVE_SPEED); chassis.pid_wait();
+  
+  // 11. Turn 45 Degrees to right
+  chassis.pid_turn_set(45_deg, TURN_SPEED); chassis.pid_wait();
+  
+  // 12. Extend Descore Piston
+  wing.set(true);
+  
+  // 13. Backward (until auton line)
+  chassis.pid_drive_set(-36_in, DRIVE_SPEED); chassis.pid_wait();
+}
+
+void razorAutonLeft() {
+  // Add your own auton code here!
+}
+
+void soloAWP() {
+  // Add your own auton code here!
+}
