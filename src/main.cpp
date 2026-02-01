@@ -1,6 +1,7 @@
 #include "main.h"
 #include "subsystems.hpp"
-/////
+#include "const.hpp"
+
 // For installation, upgrading, documentations, and tutorials, check out our website!
 // https://ez-robotics.github.io/EZ-Template/
 /////
@@ -8,8 +9,8 @@
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
-    {-20,-15, 14},
-    {19, 18, -17},     // Left Chassis Ports (negative port will reverse it!)
+    {FL,ML, BL},
+    {FR, MR, BR},     // Left Chassis Ports (negative port will reverse it!)
       // Right Chassis Ports (negative port will reverse it!)
 
     2,      // IMU Port
@@ -47,8 +48,8 @@ void initialize() {
 
   // Configure your chassis controls
   chassis.opcontrol_curve_buttons_toggle(true);   // Enables modifying the controller curve with buttons on the joysticks
-  chassis.opcontrol_drive_activebrake_set(1.0);   // Sets the active brake kP. We recommend ~2.  0 will disable.
-  chassis.opcontrol_curve_default_set(0.0, 0.0);  // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)
+  chassis.opcontrol_drive_activebrake_set(2.0);   // Sets the active brake kP. We recommend ~2.  0 will disable.
+  // chassis.opcontrol_curve_default_set(0.0, 0.0);  // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)
 
   // Set the drive to your own constants from autons.cpp!
   default_constants();
@@ -62,22 +63,11 @@ void initialize() {
       // {"Left Auton\n\nDrive forward, turn left, and come back", left_auton},
       // {"Right Auton\n\nDrive forward, turn right, and come back", right_auton},
       // {"Solo AWP\n\nDrive forward, shoot, and come back", solo_awp},
-                                          {"Skills\n\nFull skills auton", skillsAuton},
-
-                                      {"Kamakaze Right Corner\n Kamakaze From Top Right Corner Pointing Out.", kamakaze_right},
-
-
-
-
-                        {"Matchload Left\n For the left!.", matchload_left},
-
-                        {"Matchload Right\n For the right!.", matchload_right}
-
-
-
-
-
-
+      {"Skills\n\nFull skills auton", skillsAuton},
+      {"Kamakaze Right Corner\n Kamakaze From Top Right Corner Pointing Out.", kamakaze_right},
+      {"Matchload Left\n For the left!.", matchload_left},
+      {"Matchload Right\n For the right!.", matchload_right},
+      {"Rotate 360, tuning", tuningRotate}
 
   });
 
@@ -87,10 +77,10 @@ void initialize() {
   master.rumble(chassis.drive_imu_calibrated() ? "." : "---");
   matchloader.set(false);
   middlegoal.set(true);
-  chassis.slew_drive_set(true);  
-  chassis.slew_drive_constants_set(3_in, 50);
-  chassis.slew_turn_constants_set(10_deg, 75);
 }
+// intake port 8, outtake port 10
+
+
 
 /**
  * Runs while the robot is in the disabled state of Field Management System or
@@ -278,7 +268,7 @@ void opcontrol() {
       intake.move(110);
     } 
     else if (master.get_digital(DIGITAL_R2)) {
-      intake.move(-75);
+      intake.move(-110);
     } 
     else {
       intake.move(0);

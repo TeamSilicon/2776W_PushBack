@@ -15,3 +15,7 @@ void kamakaze_right();
 void skillsAuton();
 // auton v2
 void autonSkillsV2();
+
+
+// tuning
+void tuningRotate();

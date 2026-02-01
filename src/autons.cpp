@@ -261,7 +261,6 @@ void skillsAuton(){
   
 }
 void autonSkillsV2() {
-  // Sequence implementing original pseudo-commands using chassis and motor calls
   // 1 Forward
   chassis.pid_drive_set(10_in, DRIVE_SPEED); chassis.pid_wait();
   // 2 Left 90
@@ -416,4 +415,10 @@ void razorAutonLeft() {
 
 void soloAWP() {
   // Add your own auton code here!
+}
+
+// tuning
+void tuningRotate() {
+  chassis.pid_turn_set(360_deg, TURN_SPEED);
+  chassis.pid_wait();
 }
