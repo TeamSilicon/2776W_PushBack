@@ -9,9 +9,9 @@
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
-    {1,2, 3},
-    {4, 5, 6},     // Left Chassis Ports (negative port will reverse it!)
-      // Right Chassis Ports (negative port will reverse it!)
+    {-4, -5, -6},
+    {1,2,3}, // left
+     // right
 
     9,      // IMU Port
     3.25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
@@ -254,13 +254,21 @@ void opcontrol() {
     // chassis.opcontrol_arcade_standard(ez::SINGLE);  // Standard single arcade
     // chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
     // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
+    
+    
     // pneumatics shenanigans
 
+    // matchloader shenanigans
     if (master.get_digital(DIGITAL_UP)) {
       matchloader.set(true);
     } 
     else if (master.get_digital(DIGITAL_DOWN)) {
       matchloader.set(false);
+    } 
+
+    // wing shenanigans
+    if (master.get_digital_new_press(DIGITAL_L2)) {
+      wing.set(!wing.get());
     } 
 
     // intake shenanigans
@@ -281,13 +289,15 @@ void opcontrol() {
     else {
       outtake.move(0);
     }
-    if (master.get_digital(DIGITAL_L2)) {
+
+    //slowmode
+    if (master.get_digital(DIGITAL_X)) {
       chassis.opcontrol_speed_max_set(48);
     } 
     else {
       chassis.opcontrol_speed_max_set(78);
-
     }
+    // middlegoal shenanigans
     if(master.get_digital(DIGITAL_A)){
       middlegoal.set(false);
     }

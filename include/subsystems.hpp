@@ -11,7 +11,7 @@ extern Drive chassis;
 // inline pros::adi::DigitalIn limit_switch('A');
 
 inline pros::Motor outtake(-10);
-inline pros::Motor intake(8);
-inline ez::Piston matchloader(MATCHLOADER_PISTON);
-inline ez::Piston middlegoal(MIDDLEGOAL_PISTON);
-inline ez::Piston wing(WING_PISTON);
+inline pros::Motor intake(7);
+inline ez::Piston matchloader('A');
+inline ez::Piston middlegoal('B');
+inline ez::Piston wing('C');
