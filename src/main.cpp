@@ -267,7 +267,7 @@ void opcontrol() {
     } 
 
     // wing shenanigans
-    if (master.get_digital_new_press(DIGITAL_L2)) {
+    if (master.get_digital_new_press(DIGITAL_X)) {
       wing.set(!wing.get());
     } 
 
@@ -291,19 +291,23 @@ void opcontrol() {
     }
 
     //slowmode
-    if (master.get_digital(DIGITAL_X)) {
+    if (master.get_digital(DIGITAL_L2)) {
       chassis.opcontrol_speed_max_set(48);
     } 
     else {
       chassis.opcontrol_speed_max_set(78);
     }
     // middlegoal shenanigans
-    if(master.get_digital(DIGITAL_A)){
-      middlegoal.set(false);
-    }
-    else{
-      middlegoal.set(true);
-    }
+    // if(master.get_digital(DIGITAL_A)){
+    //   middlegoal.set(false);
+    // }
+    // else{
+    //   middlegoal.set(true);
+    // }
+
+    if (master.get_digital_new_press(DIGITAL_A)) {
+      middlegoal.set(!middlegoal.get());
+    } 
     
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME

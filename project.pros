@@ -426,7 +426,7 @@
     "upload_options": {
       "description": "Skilly Skill",
       "slot": 1,
-      "icon": "X"
+      "icon": "clawbot"
     },
     "use_early_access": false
   }
