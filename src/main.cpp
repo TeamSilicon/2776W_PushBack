@@ -63,11 +63,9 @@ void initialize() {
       // {"Left Auton\n\nDrive forward, turn left, and come back", left_auton},
       // {"Right Auton\n\nDrive forward, turn right, and come back", right_auton},
       // {"Solo AWP\n\nDrive forward, shoot, and come back", solo_awp},
+           {"Kamakaze Right Corner\n Kamakaze From Top Right Corner Pointing Out.", kamakaze_right},
+
       {"Skills\n\nFull skills auton", skillsAuton},
-      {"Kamakaze Right Corner\n Kamakaze From Top Right Corner Pointing Out.", kamakaze_right},
-      {"Matchload Left\n For the left!.", matchload_left},
-      {"Matchload Right\n For the right!.", matchload_right},
-      {"Rotate 360, tuning", tuningRotate}
 
   });
 
@@ -75,7 +73,7 @@ void initialize() {
   chassis.initialize();
   ez::as::initialize();
   master.rumble(chassis.drive_imu_calibrated() ? "." : "---");
-  matchloader.set(false);
+  // matchloaderer.set(false);
   middlegoal.set(true);
 }
 // intake port 8, outtake port 10
@@ -258,12 +256,12 @@ void opcontrol() {
     
     // pneumatics shenanigans
 
-    // matchloader shenanigans
+    // // matchloaderer shenanigans
     if (master.get_digital(DIGITAL_UP)) {
-      matchloader.set(true);
+      // matchloaderer.set(true);
     } 
     else if (master.get_digital(DIGITAL_DOWN)) {
-      matchloader.set(false);
+      // matchloaderer.set(false);
     } 
 
     // wing shenanigans
