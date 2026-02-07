@@ -9,7 +9,7 @@ void matchload_left();
 
 // right autons
 void matchload_right();
-void kamakaze_right();
+void burst_right();
 
 // auton skills
 void skillsAuton();

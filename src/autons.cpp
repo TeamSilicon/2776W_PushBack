@@ -14,6 +14,7 @@ const int SWING_SPEED = 110;
 // OUTTAKE
 const int OUTTAKE_TIME = 500; // time to run outtake motor in ms
 const int OUTTAKE_SPEED = 110; // speed to run outtake motor
+const int OUTTAKE_SPEED_BURST = 95;
 
 // SIZE
 const int ROBOT_LENGTH = 18; // robot length in inches
@@ -141,7 +142,7 @@ void matchload_right() {
   chassis.pid_drive_set(32_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(90_deg, 80);
-  matchloader.set(true);
+  // matchloader.set(true);
   chassis.pid_wait();
   intake.move(OUTTAKE_SPEED);
   chassis.pid_drive_set(6_in, 127);
@@ -161,7 +162,8 @@ void matchload_right() {
 
 }
 
-void kamakaze_right() {
+void burst_right() { // THIS ONE
+  matchloader.set(true);
   chassis.pid_drive_set(28_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(-90_deg, TURN_SPEED);
@@ -171,14 +173,15 @@ void kamakaze_right() {
   chassis.pid_wait();
   intake.move(0);
 
-  chassis.pid_drive_set(10.5_in, DRIVE_SPEED + 10);
+  chassis.pid_drive_set(12.5_in, DRIVE_SPEED + 10);
   chassis.pid_wait();
-  intake.move(-OUTTAKE_SPEED);
+
+  intake.move(-OUTTAKE_SPEED_BURST);
   pros::delay(OUTTAKE_TIME * 3); // 1nce is 500ms
   intake.move(0);
 }
 
-void skillsAuton(){
+void skillsAuton(){ // THIS ONE
 //   matchload_right();  
 //   //escape the starting matchload
 //   chassis.pid_drive_set(15_in, DRIVE_SPEED);
@@ -258,7 +261,8 @@ void skillsAuton(){
 //   // chassis.pid_wait();
 //   // chassis.pid_turn_set(-60_deg, TURN_SPEED);
 //   // chassis.pid_wait();
-chassis.pid_drive_set(20_in, DRIVE_SPEED);
+  // matchloader.set(false);
+  chassis.pid_drive_set(-25_in, DRIVE_SPEED + 40);
   chassis.pid_wait();
 }
 void autonSkillsV2() {
