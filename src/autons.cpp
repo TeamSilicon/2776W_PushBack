@@ -173,7 +173,7 @@ void burst_right() { // THIS ONE
   chassis.pid_wait();
   intake.move(0);
 
-  chassis.pid_drive_set(12.5_in, DRIVE_SPEED + 10);
+  chassis.pid_drive_set(12_in, DRIVE_SPEED + 10);
   chassis.pid_wait();
 
   intake.move(-OUTTAKE_SPEED_BURST);
@@ -262,7 +262,7 @@ void skillsAuton(){ // THIS ONE
 //   // chassis.pid_turn_set(-60_deg, TURN_SPEED);
 //   // chassis.pid_wait();
   // matchloader.set(false);
-  chassis.pid_drive_set(-25_in, DRIVE_SPEED + 40);
+  chassis.pid_drive_set(-26.5_in, DRIVE_SPEED + 60);
   chassis.pid_wait();
 }
 void autonSkillsV2() {
@@ -425,5 +425,10 @@ void soloAWP() {
 // tuning
 void tuningRotate() {
   chassis.pid_turn_set(360_deg, TURN_SPEED);
+  chassis.pid_wait();
+}
+
+void conestogaCarry() {
+  chassis.pid_drive_set(2_in, DRIVE_SPEED);
   chassis.pid_wait();
 }

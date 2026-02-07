@@ -65,6 +65,7 @@ void initialize() {
       // {"Solo AWP\n\nDrive forward, shoot, and come back", solo_awp},
       {"Skills\n\nFull skills auton", skillsAuton},
       {"Kamakaze Right Corner\n Kamakaze From Top Right Corner Pointing Out.", burst_right},
+      {"Conestoga Carry", conestogaCarry}
       
 
   });
@@ -258,10 +259,10 @@ void opcontrol() {
     // pneumatics shenanigans
 
     // // matchloaderer shenanigans
-    if (master.get_digital(DIGITAL_UP)) {
+    if (master.get_digital(DIGITAL_DOWN)) {
       matchloader.set(true);
     } 
-    else if (master.get_digital(DIGITAL_DOWN)) {
+    else if (master.get_digital(DIGITAL_UP)) {
       matchloader.set(false);
     } 
 
