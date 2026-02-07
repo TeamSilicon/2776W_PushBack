@@ -259,7 +259,7 @@ void skillsAuton(){
 //   // chassis.pid_turn_set(-60_deg, TURN_SPEED);
 //   // chassis.pid_wait();
 chassis.pid_drive_set(20_in, DRIVE_SPEED);
-  chassis.pid_wait()
+  chassis.pid_wait();
 }
 void autonSkillsV2() {
   // 1 Forward
