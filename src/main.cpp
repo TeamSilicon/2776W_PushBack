@@ -254,11 +254,8 @@ void opcontrol() {
     // chassis.opcontrol_arcade_standard(ez::SINGLE);  // Standard single arcade
     // chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
     // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
-    
-    
-    // pneumatics shenanigans
 
-    // // matchloaderer shenanigans
+    // matchloaderer shenanigans
     if (master.get_digital(DIGITAL_DOWN)) {
       matchloader.set(true);
     } 
@@ -267,7 +264,7 @@ void opcontrol() {
     } 
 
     // wing shenanigans
-    if (master.get_digital_new_press(DIGITAL_Y)) {
+    if (master.get_digital_new_press(DIGITAL_X)) {
       wing.set(!wing.get());
     } 
 

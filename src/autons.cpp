@@ -1,5 +1,6 @@
 #include "main.h"
 #include "subsystems.hpp"
+// #include "const.hpp"
 
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
@@ -432,3 +433,13 @@ void conestogaCarry() {
   chassis.pid_drive_set(2_in, DRIVE_SPEED);
   chassis.pid_wait();
 }
+
+// // shows an image cuz why not
+// void screenTest() {
+//   ez::as::initialize();
+//   ez::as::screen_clear();
+//   ez::as::screen_draw_image("2776W.bmp", 0, 0);
+//   while (true) {
+//     pros::delay(100);
+//   }
+// }
