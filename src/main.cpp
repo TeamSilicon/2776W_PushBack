@@ -64,8 +64,8 @@ void initialize() {
       // {"Right Auton\n\nDrive forward, turn right, and come back", right_auton},
       // {"Solo AWP\n\nDrive forward, shoot, and come back", solo_awp},
       {"Skills\n\nFull skills auton", skillsAuton},
-      {"Kamakaze Right Corner\n Kamakaze From Top Right Corner Pointing Out.", burst_right},
-      {"Conestoga Carry", conestogaCarry}
+      {"Burst Auton Right\n ts needs so much more tuning", burst_right},
+      {"Conestoga Carry\n 6121C for the win ong ong fr fr", conestogaCarry}
       
 
   });
