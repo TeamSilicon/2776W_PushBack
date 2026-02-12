@@ -421,6 +421,35 @@ void razorAutonLeft() {
 
 void soloAWP() {
   // Add your own auton code here!
+  // chassis.pid_drive_set(36_in, DRIVE_SPEED);
+  // chassis.pid_wait();
+  // chassis.pid_turn_set(45_deg, TURN_SPEED);
+  // chassis.pid_wait();
+  // intake.move(OUTTAKE_SPEED);
+  // pros::delay(OUTTAKE_TIME * 2);
+  // intake.move(0);
+  // chassis.pid_drive_set(10_in, DRIVE_SPEED);
+  burst_right();
+  chassis.pid_drive_set(-10_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(136_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  matchloader.set(true);
+  chassis.pid_drive_set(5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  intake.move(OUTTAKE_SPEED);
+  pros::delay(OUTTAKE_TIME * 2);
+  intake.move(0);
+  chassis.pid_drive_set(-20_in, DRIVE_SPEED);
+  intake.move(OUTTAKE_SPEED);
+  outtake.move(OUTTAKE_SPEED);
+  pros::delay(OUTTAKE_TIME * 4);
+  intake.move(0);
+  outtake.move(0);
 }
 
 // tuning
