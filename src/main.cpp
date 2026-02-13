@@ -292,7 +292,7 @@ void opcontrol() {
       chassis.opcontrol_speed_max_set(48);
     } 
     else {
-      chassis.opcontrol_speed_max_set(78);
+      chassis.opcontrol_speed_max_set(100);
     }
     // middlegoal shenanigans
     // if(master.get_digital(DIGITAL_A)){
