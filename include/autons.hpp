@@ -21,3 +21,5 @@ void autonSkillsV2();
 void tuningRotate();
 
 void conestogaCarry();
+
+void forwardAuton();

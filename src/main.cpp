@@ -1,6 +1,5 @@
 #include "main.h"
 #include "subsystems.hpp"
-#include "const.hpp"
 
 // For installation, upgrading, documentations, and tutorials, check out our website!
 // https://ez-robotics.github.io/EZ-Template/
@@ -209,7 +208,10 @@ void ez_template_extras() {
     //  * use the arrow keys to navigate the constants
     if (master.get_digital_new_press(DIGITAL_X))
       chassis.pid_tuner_toggle();
-
+    if (master.get_digital(DIGITAL_B) && !master.get_digital(DIGITAL_DOWN)) {
+      forwardAuton();
+    }
+    
     // Trigger the selected autonomous routine
     if (master.get_digital(DIGITAL_B) && master.get_digital(DIGITAL_DOWN)) {
       pros::motor_brake_mode_e_t preference = chassis.drive_brake_get();
@@ -247,7 +249,7 @@ void opcontrol() {
 
   while (true) {
     // Gives you some extras to make EZ-Template ezier
-    // ez_template_extras();
+    ez_template_extras();
 
     // chassis.opcontrol_tank();  // Tank control
     chassis.opcontrol_arcade_standard(ez::SPLIT);   // Standard split arcade
