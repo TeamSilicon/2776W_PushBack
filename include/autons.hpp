@@ -6,10 +6,12 @@ void measure_offsets();
 
 // left autons
 void matchload_left();
+void burst_left();
 
 // right autons
 void matchload_right();
 void burst_right();
+
 
 // auton skills
 void skillsAuton();
@@ -23,3 +25,5 @@ void tuningRotate();
 void conestogaCarry();
 
 void forwardAuton();
+
+void matchloader_nut();

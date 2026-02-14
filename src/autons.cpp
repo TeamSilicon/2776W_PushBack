@@ -8,7 +8,7 @@
 /////
  
 // These are out of 127
-const int DRIVE_SPEED = 50;
+const int DRIVE_SPEED = 100;
 const int TURN_SPEED = 90;
 const int SWING_SPEED = 110;
 
@@ -163,19 +163,52 @@ void matchload_right() {
 
 }
 
+void burst_left() {
+  // looks at matchloader
+  matchloader.set(true);
+  chassis.pid_drive_set(31_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  matchloader.set(false);
+  pros::delay(250);
+  intake.move(OUTTAKE_SPEED);
+  chassis.pid_drive_set(15.5_in, DRIVE_SPEED);
+
+  // now in matchloader
+  chassis.pid_wait();
+  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
+  // chassis.pid_wait();
+  chassis.pid_drive_set(4_in, DRIVE_SPEED);
+  // chassis.pid_wait();
+  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
+  // chassis.pid_wait();
+  intake.move(0);
+  chassis.pid_drive_set(-24_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  intake.move(OUTTAKE_SPEED);
+  outtake.move(OUTTAKE_SPEED);
+}
+
 void burst_right() { // THIS ONE
   matchloader.set(true);
-  chassis.pid_drive_set(28_in, DRIVE_SPEED);
+  chassis.pid_drive_set(29.5_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(-90_deg, TURN_SPEED);
   chassis.pid_wait();
   intake.move(OUTTAKE_SPEED);
-  chassis.pid_drive_set(12.5_in, DRIVE_SPEED);
+  chassis.pid_drive_set(16.5_in, DRIVE_SPEED);
   chassis.pid_wait();
   intake.move(0);
 
-  chassis.pid_drive_set(12_in, DRIVE_SPEED + 10);
+  chassis.pid_drive_set(16_in, DRIVE_SPEED);
   chassis.pid_wait();
+
+  // chassis.pid_turn_set(-10_deg, TURN_SPEED);
+  // chassis.pid_wait();
+
+  // chassis.pid_drive_set(3_in, DRIVE_SPEED);
+  // chassis.pid_wait();
 
   intake.move(-OUTTAKE_SPEED_BURST);
   pros::delay(OUTTAKE_TIME * 3); // 1nce is 500ms
@@ -263,7 +296,7 @@ void skillsAuton(){ // THIS ONE
 //   // chassis.pid_turn_set(-60_deg, TURN_SPEED);
 //   // chassis.pid_wait();
   // matchloader.set(false);
-  chassis.pid_drive_set(-26.5_in, DRIVE_SPEED + 60);
+  chassis.pid_drive_set(-26.5_in, DRIVE_SPEED);
   chassis.pid_wait();
 }
 void autonSkillsV2() {
@@ -487,5 +520,31 @@ void forwardAuton() {
   chassis.pid_wait();
   chassis.pid_drive_set(-12_in, DRIVE_SPEED);
   chassis.pid_wait();
+}
 
+void matchloader_nut() {
+  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
+  // chassis.pid_wait();
+  pros::delay(100);
+  chassis.pid_drive_set(4_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
+  pros::delay(100);
+  // chassis.pid_wait();
+  chassis.pid_drive_set(4_in, DRIVE_SPEED);
+  pros::delay(100);
+  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
+  pros::delay(100);
+  // chassis.pid_wait();
+  chassis.pid_drive_set(4_in, DRIVE_SPEED);
+  pros::delay(100);
+  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
+  pros::delay(100);
+  // chassis.pid_wait();
+  chassis.pid_drive_set(4_in, DRIVE_SPEED);
+  pros::delay(100);
+  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
+  pros::delay(100);
+  // chassis.pid_wait();
+  chassis.pid_drive_set(4_in, DRIVE_SPEED);
+  pros::delay(100);
 }

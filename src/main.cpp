@@ -63,8 +63,11 @@ void initialize() {
       // {"Right Auton\n\nDrive forward, turn right, and come back", right_auton},
       // {"Solo AWP\n\nDrive forward, shoot, and come back", solo_awp},
       {"Skills\n\nFull skills auton", skillsAuton},
-      {"Burst Auton Right\n ts needs so much more tuning", burst_right},
-      {"Conestoga Carry\n 6121C for the win ong ong fr fr", conestogaCarry}
+      {"Burst Auton Right\n RIGHTY TIGHTY", burst_right},
+      {"Burst Auton Left\n LEFTY LOOSEY", burst_left},
+      {"Conestoga Carry\n 6121C for the win ong ong fr fr", conestogaCarry},
+      {"test", matchloader_nut}
+
       
 
   });
@@ -249,7 +252,7 @@ void opcontrol() {
 
   while (true) {
     // Gives you some extras to make EZ-Template ezier
-    // ez_template_extras();
+    ez_template_extras();
 
     // chassis.opcontrol_tank();  // Tank control
     chassis.opcontrol_arcade_standard(ez::SPLIT);   // Standard split arcade
