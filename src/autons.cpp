@@ -523,28 +523,25 @@ void forwardAuton() {
 }
 
 void matchloader_nut() {
-  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
+  chassis.pid_drive_set(8_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-8_in, DRIVE_SPEED);
+  pros::delay(500);
   // chassis.pid_wait();
-  pros::delay(100);
-  chassis.pid_drive_set(4_in, DRIVE_SPEED);
-  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
-  pros::delay(100);
+  chassis.pid_drive_set(8_in, DRIVE_SPEED);
+  pros::delay(500);
+  chassis.pid_drive_set(-8_in, DRIVE_SPEED);
+  pros::delay(500);
   // chassis.pid_wait();
-  chassis.pid_drive_set(4_in, DRIVE_SPEED);
-  pros::delay(100);
-  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
-  pros::delay(100);
+  chassis.pid_drive_set(8_in, DRIVE_SPEED);
+  pros::delay(500);
+  chassis.pid_drive_set(-8_in, DRIVE_SPEED);
+  pros::delay(500);
   // chassis.pid_wait();
-  chassis.pid_drive_set(4_in, DRIVE_SPEED);
-  pros::delay(100);
-  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
-  pros::delay(100);
+  chassis.pid_drive_set(8_in, DRIVE_SPEED);
+  pros::delay(500);
+  chassis.pid_drive_set(-8_in, DRIVE_SPEED);
+  pros::delay(500);
   // chassis.pid_wait();
-  chassis.pid_drive_set(4_in, DRIVE_SPEED);
-  pros::delay(100);
-  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
-  pros::delay(100);
-  // chassis.pid_wait();
-  chassis.pid_drive_set(4_in, DRIVE_SPEED);
-  pros::delay(100);
+  chassis.pid_drive_set(8_in, DRIVE_SPEED);
+  pros::delay(500);
 }
