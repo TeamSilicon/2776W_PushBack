@@ -8,7 +8,7 @@
 /////
  
 // These are out of 127
-const int DRIVE_SPEED = 100;
+const int DRIVE_SPEED = 110;
 const int TURN_SPEED = 90;
 const int SWING_SPEED = 110;
 
@@ -178,7 +178,7 @@ void burst_left() {
 
   matchloader_nut();
   intake.move(0);
-  chassis.pid_drive_set(-30_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-32_in, DRIVE_SPEED);
   chassis.pid_wait();
   intake.move(OUTTAKE_SPEED);
   outtake.move(OUTTAKE_SPEED);

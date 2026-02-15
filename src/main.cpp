@@ -295,10 +295,10 @@ void opcontrol() {
 
     //slowmode
     if (master.get_digital(DIGITAL_L2)) {
-      chassis.opcontrol_speed_max_set(48);
+      chassis.opcontrol_speed_max_set(78);
     } 
     else {
-      chassis.opcontrol_speed_max_set(100);
+      chassis.opcontrol_speed_max_set(110);
     }
     // middlegoal shenanigans
     // if(master.get_digital(DIGITAL_A)){
