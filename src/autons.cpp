@@ -166,28 +166,23 @@ void matchload_right() {
 void burst_left() {
   // looks at matchloader
   matchloader.set(true);
-  chassis.pid_drive_set(31_in, DRIVE_SPEED);
+  chassis.pid_drive_set(32_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(-90_deg, TURN_SPEED);
   chassis.pid_wait();
   matchloader.set(false);
-  pros::delay(250);
+  pros::delay(500);
   intake.move(OUTTAKE_SPEED);
-  chassis.pid_drive_set(15.5_in, DRIVE_SPEED);
-
-  // now in matchloader
+  chassis.pid_drive_set(12_in, DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
-  // chassis.pid_wait();
-  chassis.pid_drive_set(4_in, DRIVE_SPEED);
-  // chassis.pid_wait();
-  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
-  // chassis.pid_wait();
+
+  matchloader_nut();
   intake.move(0);
-  chassis.pid_drive_set(-24_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-30_in, DRIVE_SPEED);
   chassis.pid_wait();
   intake.move(OUTTAKE_SPEED);
   outtake.move(OUTTAKE_SPEED);
+  pros::delay(OUTTAKE_TIME * 5);
 }
 
 void burst_right() { // THIS ONE
@@ -523,25 +518,33 @@ void forwardAuton() {
 }
 
 void matchloader_nut() {
-  chassis.pid_drive_set(8_in, DRIVE_SPEED);
-  chassis.pid_drive_set(-8_in, DRIVE_SPEED);
+  chassis.pid_drive_set(6_in, DRIVE_SPEED);
+  pros::delay(500);
+  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
   pros::delay(500);
   // chassis.pid_wait();
-  chassis.pid_drive_set(8_in, DRIVE_SPEED);
+  chassis.pid_drive_set(6_in, DRIVE_SPEED);
   pros::delay(500);
-  chassis.pid_drive_set(-8_in, DRIVE_SPEED);
-  pros::delay(500);
-  // chassis.pid_wait();
-  chassis.pid_drive_set(8_in, DRIVE_SPEED);
-  pros::delay(500);
-  chassis.pid_drive_set(-8_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
   pros::delay(500);
   // chassis.pid_wait();
-  chassis.pid_drive_set(8_in, DRIVE_SPEED);
+  chassis.pid_drive_set(6_in, DRIVE_SPEED);
   pros::delay(500);
-  chassis.pid_drive_set(-8_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
   pros::delay(500);
   // chassis.pid_wait();
-  chassis.pid_drive_set(8_in, DRIVE_SPEED);
+  chassis.pid_drive_set(6_in, DRIVE_SPEED);
   pros::delay(500);
+  // chassis.pid_drive_set(-4_in, DRIVE_SPEED);
+  // pros::delay(500);
+  // // chassis.pid_wait();
+  // chassis.pid_drive_set(6_in, DRIVE_SPEED);
+  // pros::delay(500);
+}
+
+void testingOuttake () {
+  intake.move(OUTTAKE_SPEED);
+  outtake.move(OUTTAKE_SPEED);
+  pros::delay(OUTTAKE_TIME * 2);
+  outtake.move(0);
 }
