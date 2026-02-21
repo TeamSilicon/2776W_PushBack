@@ -8,7 +8,7 @@
 /////
  
 // These are out of 127
-const int DRIVE_SPEED = 110;
+const int DRIVE_SPEED = 85;
 const int TURN_SPEED = 90;
 const int SWING_SPEED = 110;
 
@@ -72,7 +72,7 @@ void measure_offsets() {
   if (chassis.odom_tracker_right != nullptr) chassis.odom_tracker_right->reset();
   if (chassis.odom_tracker_back != nullptr) chassis.odom_tracker_back->reset();
   if (chassis.odom_tracker_front != nullptr) chassis.odom_tracker_front->reset();
-  
+
   for (int i = 0; i < iterations; i++) {
     // Reset pid targets and get ready for running an auton
     chassis.pid_targets_reset();
@@ -166,11 +166,40 @@ void matchload_right() {
 void burst_left() {
   // looks at matchloader
   matchloader.set(true);
-  chassis.pid_drive_set(32_in, DRIVE_SPEED);
+  chassis.pid_drive_set(37_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(-90_deg, TURN_SPEED);
   chassis.pid_wait();
-  matchloader.set(false);
+  // matchloader.set(false);
+  pros::delay(500);
+  intake.move(OUTTAKE_SPEED);
+  chassis.pid_drive_set(12_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  matchloaderNutLeft();
+  intake.move(0);
+  chassis.pid_drive_set(-32_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  intake.move(OUTTAKE_SPEED);
+  outtake.move(OUTTAKE_SPEED);
+  pros::delay(OUTTAKE_TIME * 5);
+  intake.move(0);
+  outtake.move(0);
+
+  chassis.pid_drive_set(5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-6_in, DRIVE_SPEED+20);
+  chassis.pid_wait();
+}
+
+void skilly() {
+  // looks at matchloader
+  matchloader.set(true);
+  chassis.pid_drive_set(36_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  // matchloader.set(false);
   pros::delay(500);
   intake.move(OUTTAKE_SPEED);
   chassis.pid_drive_set(12_in, DRIVE_SPEED);
@@ -183,6 +212,14 @@ void burst_left() {
   intake.move(OUTTAKE_SPEED);
   outtake.move(OUTTAKE_SPEED);
   pros::delay(OUTTAKE_TIME * 5);
+  matchloader.set(false);
+  pros::delay(500);
+
+  chassis.pid_drive_set(10_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(45_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(136_in, DRIVE_SPEED);
 }
 
 void burst_right() { // THIS ONE
@@ -518,28 +555,44 @@ void forwardAuton() {
 }
 
 void matchloader_nut() {
-  chassis.pid_drive_set(6_in, DRIVE_SPEED);
+  chassis.pid_drive_set(7_in, DRIVE_SPEED);
   pros::delay(500);
-  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
-  pros::delay(500);
-  // chassis.pid_wait();
-  chassis.pid_drive_set(6_in, DRIVE_SPEED);
-  pros::delay(500);
-  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-3_in, DRIVE_SPEED);
   pros::delay(500);
   // chassis.pid_wait();
-  chassis.pid_drive_set(6_in, DRIVE_SPEED);
+  chassis.pid_drive_set(7_in, DRIVE_SPEED);
   pros::delay(500);
-  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-3_in, DRIVE_SPEED);
   pros::delay(500);
   // chassis.pid_wait();
-  chassis.pid_drive_set(6_in, DRIVE_SPEED);
+  chassis.pid_drive_set(7_in, DRIVE_SPEED);
+  pros::delay(500);
+  chassis.pid_drive_set(-3_in, DRIVE_SPEED);
+  pros::delay(500);
+  // chassis.pid_wait();
+  chassis.pid_drive_set(7_in, DRIVE_SPEED);
+  pros::delay(500);
+  chassis.pid_drive_set(-3_in, DRIVE_SPEED);
+  pros::delay(500);
+  // chassis.pid_wait();
+  chassis.pid_drive_set(7_in, DRIVE_SPEED);
   pros::delay(500);
   // chassis.pid_drive_set(-4_in, DRIVE_SPEED);
   // pros::delay(500);
   // // chassis.pid_wait();
   // chassis.pid_drive_set(6_in, DRIVE_SPEED);
   // pros::delay(500);
+}
+
+void matchloaderNutLeft() {
+  chassis.pid_drive_set(6_in, DRIVE_SPEED);
+  pros::delay(500);
+  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
+  pros::delay(500);
+  // chassis.pid_wait();
+  chassis.pid_drive_set(6_in, DRIVE_SPEED);
+  pros::delay(500);
+  
 }
 
 void testingOuttake () {

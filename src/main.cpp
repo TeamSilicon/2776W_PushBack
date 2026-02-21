@@ -8,13 +8,13 @@
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
-    {-4, -5, -6},
-    {1,2,3}, // left
+    {-4, -5, -6}, // left
+    {1,2,3}, // right
      // right
 
     9,      // IMU Port
     3.25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
-    360);   // Wheel RPM = cartridge * (motor gear / wheel gear)
+    450);   // Wheel RPM = cartridge * (motor gear / wheel gear)
 
 // Uncomment the trackers you're using here!
 // - `8` and `9` are smart ports (making these negative will reverse the sensor)
@@ -48,6 +48,7 @@ void initialize() {
   // Configure your chassis controls
   chassis.opcontrol_curve_buttons_toggle(true);   // Enables modifying the controller curve with buttons on the joysticks
   chassis.opcontrol_drive_activebrake_set(2.0);   // Sets the active brake kP. We recommend ~2.  0 will disable.
+  chassis.opcontrol_curve_default_set(2.1, 4.3);
   // chassis.opcontrol_curve_default_set(0.0, 0.0);  // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)
 
   // Set the drive to your own constants from autons.cpp!
@@ -65,6 +66,7 @@ void initialize() {
       {"Skills\n\nFull skills auton", skillsAuton},
       {"Burst Auton Right\n RIGHTY TIGHTY", burst_right},
       {"Burst Auton Left\n LEFTY LOOSEY", burst_left},
+      {"skilly", skilly},
       {"Conestoga Carry\n 6121C for the win ong ong fr fr", conestogaCarry},
       {"test", matchloader_nut},
       // {"more test", testingOuttake}
@@ -79,7 +81,7 @@ void initialize() {
   master.rumble(chassis.drive_imu_calibrated() ? "." : "---");
   // matchloaderer.set(false);
   middlegoal.set(false);
-  matchloader.set(true);
+  matchloader.set(false);
 }
 // intake port 8, outtake port 10
 

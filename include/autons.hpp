@@ -29,3 +29,7 @@ void forwardAuton();
 void matchloader_nut();
 
 void testingOuttake();
+
+void matchloaderNutLeft();
+
+void skilly();
