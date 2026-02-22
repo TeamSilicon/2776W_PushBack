@@ -524,7 +524,7 @@ void tuningRotate() {
 }
 
 void conestogaCarry() {
-  chassis.pid_drive_set(2_in, DRIVE_SPEED);
+  chassis.pid_drive_set(3_in, DRIVE_SPEED);
   chassis.pid_wait();
 }
 
