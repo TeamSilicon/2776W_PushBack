@@ -33,3 +33,7 @@ void testingOuttake();
 void matchloaderNutLeft();
 
 void skilly();
+
+void burst_skills();
+
+void skillsMatchload();
