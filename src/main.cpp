@@ -68,6 +68,7 @@ void initialize() {
       {"right updated", burst_burst_right},
       {"Burst Auton Left\n LEFTY LOOSEY", burst_left},
       {"SKILLLLLL", burst_skills},
+      {"left no mid", burst_left_demid},
       {"skilly", skilly},
       {"Conestoga Carry\n 6121C for the win ong ong fr fr", conestogaCarry},
       {"test", matchloader_nut},

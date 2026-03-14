@@ -39,3 +39,5 @@ void burst_skills();
 void skillsMatchload();
 
 void burst_burst_right();
+
+void burst_left_demid();
