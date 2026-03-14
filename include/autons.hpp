@@ -37,3 +37,5 @@ void skilly();
 void burst_skills();
 
 void skillsMatchload();
+
+void burst_burst_right();

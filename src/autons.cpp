@@ -163,6 +163,53 @@ void matchload_right() {
 
 }
 
+void burst_burst_right() {
+  // looks at matchloader
+  matchloader.set(true);
+  wing.set(true);
+  chassis.pid_drive_set(36.75_in, DRIVE_SPEED + 20);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  // // matchloader.set(false);
+  // pros::delay(500);
+  intake.move(OUTTAKE_SPEED);
+  chassis.pid_drive_set(14_in, DRIVE_SPEED + 20);
+  chassis.pid_wait();
+
+  matchloaderNutLeft();
+  intake.move(0);
+  chassis.pid_drive_set(-32_in, DRIVE_SPEED - 20);
+  chassis.pid_wait();
+  intake.move(OUTTAKE_SPEED);
+  outtake.move(OUTTAKE_SPEED);
+  pros::delay(OUTTAKE_TIME * 5);
+  intake.move(0);
+  outtake.move(0);
+
+  chassis.pid_drive_set(10_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(180_deg, TURN_SPEED);
+  chassis.pid_wait();
+
+  matchloader.set(false);
+  chassis.pid_drive_set(8.75_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-135_deg, TURN_SPEED);
+  chassis.pid_wait();
+  intake.move(OUTTAKE_SPEED);
+  chassis.pid_drive_set(20_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  intake.move(0);
+  chassis.pid_turn_set(-45_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-20_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  middlegoal.set(true);
+  intake.move(OUTTAKE_SPEED);
+  pros::delay(OUTTAKE_TIME * 5);
+}
+
 void burst_skills(){
   matchloader.set(true);
   chassis.pid_drive_set(36.75_in, DRIVE_SPEED + 20); // go forward side
