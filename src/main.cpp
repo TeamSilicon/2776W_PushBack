@@ -259,7 +259,7 @@ void opcontrol() {
 
   while (true) {
     // Gives you some extras to make EZ-Template ezier
-    ez_template_extras();
+    // ez_template_extras();
 
     // chassis.opcontrol_tank();  // Tank control
     chassis.opcontrol_arcade_standard(ez::SPLIT);   // Standard split arcade
@@ -276,7 +276,7 @@ void opcontrol() {
     } 
 
     // wing shenanigans
-    if (master.get_digital_new_press(DIGITAL_X)) {
+    if (master.get_digital_new_press(DIGITAL_Y)) {
       wing.set(!wing.get());
     } 
 

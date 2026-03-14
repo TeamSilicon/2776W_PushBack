@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Auton Testing",
+    "project_name": "Ailesh",
     "target": "v5",
     "templates": {
       "EZ-Template": {
@@ -425,8 +425,8 @@
     },
     "upload_options": {
       "description": "2776W is winning trust",
-      "slot": 3,
-      "icon": "ufo"
+      "slot": 2,
+      "icon": "robot"
     },
     "use_early_access": false
   }

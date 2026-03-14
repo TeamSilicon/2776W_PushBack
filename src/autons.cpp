@@ -174,7 +174,7 @@ void burst_burst_right() {
   // // matchloader.set(false);
   // pros::delay(500);
   intake.move(OUTTAKE_SPEED);
-  chassis.pid_drive_set(14_in, DRIVE_SPEED + 20);
+  chassis.pid_drive_set(14_in, DRIVE_SPEED + 40);
   chassis.pid_wait();
 
   matchloaderNutLeft();
@@ -219,7 +219,7 @@ void burst_skills(){
   chassis.pid_wait();
   // pros::delay(500);
   intake.move(OUTTAKE_SPEED);
-  chassis.pid_drive_set(14_in, DRIVE_SPEED + 20); // nut into matchloader
+  chassis.pid_drive_set(14_in, DRIVE_SPEED + 40); // nut into matchloader
   chassis.pid_wait();
   skillsMatchload();
   intake.move(0);
@@ -250,7 +250,7 @@ void burst_skills(){
   wing.set(false);
   pros::delay(500);
   intake.move(OUTTAKE_SPEED);
-  chassis.pid_drive_set(34_in, DRIVE_SPEED); // front
+  chassis.pid_drive_set(34_in, DRIVE_SPEED + 40); // front
   chassis.pid_wait();
   skillsMatchload();
   intake.move(0);
@@ -294,7 +294,7 @@ void burst_left() {
   // // matchloader.set(false);
   // pros::delay(500);
   intake.move(OUTTAKE_SPEED);
-  chassis.pid_drive_set(14_in, DRIVE_SPEED + 20);
+  chassis.pid_drive_set(14_in, DRIVE_SPEED + 40);
   chassis.pid_wait();
 
   matchloaderNutLeft();
@@ -341,7 +341,7 @@ void burst_left_demid() {
   // // matchloader.set(false);
   // pros::delay(500);
   intake.move(OUTTAKE_SPEED);
-  chassis.pid_drive_set(14_in, DRIVE_SPEED + 20);
+  chassis.pid_drive_set(14_in, DRIVE_SPEED + 40);
   chassis.pid_wait();
 
   matchloaderNutLeft();
