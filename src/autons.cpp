@@ -163,22 +163,94 @@ void matchload_right() {
 
 }
 
+void burst_skills(){
+  matchloader.set(true);
+  chassis.pid_drive_set(36.75_in, DRIVE_SPEED + 20); // go forward side
+  chassis.pid_wait();
+  chassis.pid_turn_set(-90_deg, TURN_SPEED); // turn towards matchloader
+  chassis.pid_wait();
+  // pros::delay(500);
+  intake.move(OUTTAKE_SPEED);
+  chassis.pid_drive_set(14_in, DRIVE_SPEED + 20); // nut into matchloader
+  chassis.pid_wait();
+  skillsMatchload();
+  intake.move(0);
+  chassis.pid_drive_set(-22_in, DRIVE_SPEED - 20); // midddd
+  chassis.pid_wait();
+  // intake.move(OUTTAKE_SPEED);
+  // outtake.move(OUTTAKE_SPEED);
+  // pros::delay(OUTTAKE_TIME * 5);
+  // intake.move(0);
+  // outtake.move(0);
+  // chassis.pid_drive_set(10_in, DRIVE_SPEED);
+  // chassis.pid_wait();
+  chassis.pid_turn_set(180_deg, TURN_SPEED); // turn to other side
+  chassis.pid_wait();
+  // other side
+  chassis.pid_drive_set(97_in, DRIVE_SPEED + 20); // go to other side
+  chassis.pid_wait();
+  chassis.pid_turn_set(-90_deg, TURN_SPEED); // face matchaloder
+  chassis.pid_wait();
+  chassis.pid_drive_set(-10_in, DRIVE_SPEED - 20); // go to goal
+  chassis.pid_wait();
+  wing.set(true);
+  intake.move(OUTTAKE_SPEED);
+  outtake.move(OUTTAKE_SPEED);
+  pros::delay(OUTTAKE_TIME * 5);
+  intake.move(0);
+  outtake.move(0); // outtake
+  wing.set(false);
+  pros:delay(500);
+  intake.move(OUTTAKE_SPEED);
+  chassis.pid_drive_set(34_in, DRIVE_SPEED); // front
+  chassis.pid_wait();
+  skillsMatchload();
+  intake.move(0);
+  chassis.pid_drive_set(-32_in, DRIVE_SPEED - 20); 
+  chassis.pid_wait();
+  wing.set(true);
+  intake.move(OUTTAKE_SPEED);
+  outtake.move(OUTTAKE_SPEED);
+  pros::delay(OUTTAKE_TIME * 5);
+  intake.move(0);
+  outtake.move(0);
+  wing.set(false);
+ 
+  // travel to park yippee
+  chassis.pid_drive_set(10_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(180_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-30_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-20_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(180_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-30_in, DRIVE_SPEED);
+  chassis.pid_wait();
+}
+
 void burst_left() {
+
   // looks at matchloader
   matchloader.set(true);
-  chassis.pid_drive_set(37_in, DRIVE_SPEED);
+  wing.set(true);
+  chassis.pid_drive_set(36.75_in, DRIVE_SPEED + 20);
   chassis.pid_wait();
   chassis.pid_turn_set(-90_deg, TURN_SPEED);
   chassis.pid_wait();
-  // matchloader.set(false);
-  pros::delay(500);
+  // // matchloader.set(false);
+  // pros::delay(500);
   intake.move(OUTTAKE_SPEED);
-  chassis.pid_drive_set(12_in, DRIVE_SPEED);
+  chassis.pid_drive_set(14_in, DRIVE_SPEED + 20);
   chassis.pid_wait();
 
   matchloaderNutLeft();
   intake.move(0);
-  chassis.pid_drive_set(-32_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-32_in, DRIVE_SPEED - 20);
   chassis.pid_wait();
   intake.move(OUTTAKE_SPEED);
   outtake.move(OUTTAKE_SPEED);
@@ -186,15 +258,34 @@ void burst_left() {
   intake.move(0);
   outtake.move(0);
 
-  chassis.pid_drive_set(5_in, DRIVE_SPEED);
+  chassis.pid_drive_set(10_in, DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-6_in, DRIVE_SPEED+20);
+  chassis.pid_turn_set(180_deg, TURN_SPEED);
   chassis.pid_wait();
+
+  matchloader.set(false);
+  chassis.pid_drive_set(8.75_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(135_deg, TURN_SPEED);
+  chassis.pid_wait();
+  intake.move(OUTTAKE_SPEED);
+  chassis.pid_drive_set(20_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  intake.move(0);
+  chassis.pid_turn_set(-45_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-20_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  middlegoal.set(true);
+  intake.move(OUTTAKE_SPEED);
+  pros::delay(OUTTAKE_TIME * 5);
+  
 }
 
 void skilly() {
   // looks at matchloader
   matchloader.set(true);
+  wing.set(true);
   chassis.pid_drive_set(36_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(-90_deg, TURN_SPEED);
@@ -223,7 +314,8 @@ void skilly() {
 }
 
 void burst_right() { // THIS ONE
-  matchloader.set(true);
+  matchloader.set(false);
+  // wing.set(true);
   chassis.pid_drive_set(29.5_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(-90_deg, TURN_SPEED);
@@ -243,7 +335,7 @@ void burst_right() { // THIS ONE
   // chassis.pid_wait();
 
   intake.move(-OUTTAKE_SPEED_BURST);
-  pros::delay(OUTTAKE_TIME * 3); // 1nce is 500ms
+  pros::delay(OUTTAKE_TIME * 5); // 1nce is 500ms
   intake.move(0);
 }
 
@@ -585,14 +677,34 @@ void matchloader_nut() {
 }
 
 void matchloaderNutLeft() {
-  chassis.pid_drive_set(6_in, DRIVE_SPEED);
+  chassis.pid_drive_set(8_in, DRIVE_SPEED);
   pros::delay(500);
-  chassis.pid_drive_set(-4_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-2.5_in, DRIVE_SPEED);
   pros::delay(500);
   // chassis.pid_wait();
-  chassis.pid_drive_set(6_in, DRIVE_SPEED);
+  chassis.pid_drive_set(8_in, DRIVE_SPEED);
   pros::delay(500);
   
+}
+
+void skillsMatchload() {
+  chassis.pid_drive_set(8_in, DRIVE_SPEED);
+  pros::delay(500);
+  chassis.pid_drive_set(-2.5_in, DRIVE_SPEED);
+  pros::delay(500);
+  // chassis.pid_wait();
+  chassis.pid_drive_set(8_in, DRIVE_SPEED);
+  pros::delay(500);
+  chassis.pid_drive_set(-2.5_in, DRIVE_SPEED);
+  pros::delay(500);
+  // chassis.pid_wait();
+  chassis.pid_drive_set(8_in, DRIVE_SPEED);
+  pros::delay(500);
+  chassis.pid_drive_set(-2.5_in, DRIVE_SPEED);
+  pros::delay(500);
+  // chassis.pid_wait();
+  chassis.pid_drive_set(8_in, DRIVE_SPEED);
+  pros::delay(500);
 }
 
 void testingOuttake () {
