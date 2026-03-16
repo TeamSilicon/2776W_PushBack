@@ -276,7 +276,7 @@ void opcontrol() {
     } 
 
     // wing shenanigans
-    if (master.get_digital_new_press(DIGITAL_Y)) {
+    if (master.get_digital_new_press(DIGITAL_X)) {
       wing.set(!wing.get());
     } 
 

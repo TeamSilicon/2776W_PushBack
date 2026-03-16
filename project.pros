@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "auton testing",
+    "project_name": "Swarit",
     "target": "v5",
     "templates": {
       "EZ-Template": {
@@ -425,8 +425,8 @@
     },
     "upload_options": {
       "description": "2776W is winning trust",
-      "slot": 3,
-      "icon": "ufo"
+      "slot": 1,
+      "icon": "X"
     },
     "use_early_access": false
   }

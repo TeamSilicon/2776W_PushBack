@@ -167,7 +167,7 @@ void burst_burst_right() {
   // looks at matchloader
   matchloader.set(true);
   wing.set(true);
-  chassis.pid_drive_set(36.75_in, DRIVE_SPEED + 20);
+  chassis.pid_drive_set(37.25_in, DRIVE_SPEED + 20);
   chassis.pid_wait();
   chassis.pid_turn_set(90_deg, TURN_SPEED);
   chassis.pid_wait();
@@ -193,7 +193,7 @@ void burst_burst_right() {
   chassis.pid_wait();
 
   matchloader.set(false);
-  chassis.pid_drive_set(9.125_in, DRIVE_SPEED);
+  chassis.pid_drive_set(10.5_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(-135_deg, TURN_SPEED);
   chassis.pid_wait();
